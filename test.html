@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-route.min.js"></script>
+    <script src="controllers/tacgiacontroller.js"></script>
+    <script src="controllers/Addcontroller.js"></script>
+    <script src="controllers/Editscontroller.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+<body class="container" ng-app="appRoute">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#!/tac-gia">Trang chủ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#!/page">Pages</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#!/tac-gia/add">Thêm Tác giả</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main ng-view>
+
+    </main>
+</body>
+<script>
+    angular.module('appRoute', ['ngRoute']).config(function (routeProvider) {
+        routeProvider.when('/tac-gia', {
+            templateUrl: 'views/tac-gia.html',
+            controller: tacgiacontroller
+        }).when("/pages",{
+            templateUrl : "views/pages.html",
+        }).when("/tac-gia/add",{
+            templateUrl : "views/Add.html",
+            controller: Addcontroller
+        }).when("/tac-gia/:id/edit",{
+            templateUrl : "views/Edit.html",
+            controller: Editscontroller
+        })
+    })
+</script>
+
+</html>
